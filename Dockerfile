@@ -7,6 +7,7 @@ RUN apt-get update && \
     curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
     apt-get update && \
+    apt-get install -y mc && \
     apt-get install -y --no-install-recommends nodejs && \
     apt-get purge -y gnupg && \
     apt-get autoremove -y && \
@@ -36,5 +37,6 @@ RUN mkdir -p /root/.nanobot
 # Gateway default port
 EXPOSE 18790
 
-ENTRYPOINT ["nanobot"]
-CMD ["status"]
+#ENTRYPOINT ["nanobot"]
+#CMD ["status"]
+CMD ["/bin/bash"]
